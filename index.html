@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength checker</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet">
+</head>
+<body>
+    <div id="main">
+     <div class="container">
+        <div class="inputbox">
+             <input type="password" id="password" placeholder="Enter Password">
+             <button class="submit" type="submit"><i class="ri-arrow-right-fill"></i></button>
+             <p id="para"> Password is <span id="strength"></span></p>
+        </div>
+     </div>
+    </div>
+  <script>
+    var pass = document.getElementById("password");
+var message = document.getElementById("para");
+var stren = document.getElementById("strength");
+
+pass.addEventListener('input', () => {
+    if (pass.value.length > 0) {
+        message.style.display = "block";
+    } else {
+        message.style.display = "none";
+    }
+
+    const hasUpperCase = /[A-Z]/.test(pass.value);
+    const hasLowerCase = /[a-z]/.test(pass.value);
+    const hasNumbers = /[0-9]/.test(pass.value);
+    const hasSpecialChars = /[!@#$%^&*(),.?":{}|<>]/.test(pass.value);
+
+    if (pass.value.length < 8) { 
+        stren.innerHTML = "Weak😐";
+        pass.style.borderColor="red";
+        message.style.color="red";
+    } else if (pass.value.length >= 8 && hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChars) {
+        stren.innerHTML = "Strong Password😎";
+        pass.style.borderColor="green";
+        message.style.color="#5f9ea0";
+        
+    } else {
+        stren.innerHTML = "Moderate Password😪";
+        pass.style.borderColor="yellow";
+        message.style.color="yellow";
+    }
+});
+
+  </script>
+</body>
+</html>
