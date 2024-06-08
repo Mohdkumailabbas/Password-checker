@@ -14,15 +14,25 @@
      <div class="container">
         <div class="inputbox">
              <input type="password" id="password" placeholder="Enter Password">
-             <button class="submit" type="submit"><i class="ri-arrow-right-fill"></i></button>
+             <button id="eyeicon"><i class="ri-eye-off-fill"></i></button>
              <p id="para"> Password is <span id="strength"></span></p>
         </div>
      </div>
     </div>
   <script>
     var pass = document.getElementById("password");
-var message = document.getElementById("para");
-var stren = document.getElementById("strength");
+    var message = document.getElementById("para");
+    var stren = document.getElementById("strength");
+    let eyeicon=document.getElementById("eyeicon");
+     eyeicon.onclick=function(){
+        if(pass.type=="password"){
+            pass.type="text";
+            eyeicon.innerHTML = "<i class='ri-eye-fill'></i>";
+        }else{
+            pass.type="password";
+            eyeicon.innerHTML ="<i class='ri-eye-off-fill'></i>"
+        }
+     }
 
 pass.addEventListener('input', () => {
     if (pass.value.length > 0) {
